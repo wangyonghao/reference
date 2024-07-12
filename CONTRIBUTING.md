@@ -119,7 +119,7 @@ $ npm run start  # 开发模式，监听实时编译输出静态页面
 
 文件被输出到 `dist` 目录，将 `dist` 目录静态页面部署到静态服务就可以了
 
-<img width="423" alt="image" src="https://user-images.githubusercontent.com/1680273/203210099-cd9e1377-bceb-40cc-98f1-4c4c549a3986.png">
+<img width="423" alt="image" src="https://user-images.githubusercontent.com/1680273/203210099-cd9e1377-bceb-40cc-98f1-4c4c549a3986.png"> 
 
 提供自定义菜单，在项目的根目录建立 `.env` 文件，添加下面内容
 

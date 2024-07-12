@@ -1,3 +1,4 @@
+
 Oracle 备忘清单
 ===
 
@@ -639,6 +640,29 @@ ALTER USER username IDENTIFIED BY password;
 
 ```sql
 ALTER USER brian IDENTIFIED BY brianpassword;
+```
+
+### 查询数据库表结构，方便导出Excel格式
+
+```sql
+select t.table_name,t.column_id as ord,t.column_name,t.data_type ||'('||t.data_length||')' data_type,t.nullable,c.comments,
+       (select case s.constraint_type
+               when 'P' then 'PK'
+               when 'R' then 'FK'
+               when 'U' then 'UK'
+               END as constraint_type
+        from user_constraints s, user_cons_columns m
+        where s.table_name= t.table_name
+          and m.column_name = c.column_name
+          and m.table_name=s.table_name
+          and m.constraint_name=s.constraint_name
+          and s.constraint_type in ('P','U','R')) key
+FROM user_tab_cols t, user_col_comments c
+WHERE t.table_name='TREG01_TAXPAYER'                    -- change table_name here
+  and c.table_name=t.table_name
+  and c.column_name=t.column_name
+  and t.hidden_column='NO'
+order by t.column_id;
 ```
 
 另见

@@ -22,7 +22,7 @@ $ bash hello.sh
 
 ### 变量
 
-```bash
+```shell
 NAME="John"
 echo ${NAME}    # => John (变量)
 echo $NAME      # => John (变量)
@@ -30,6 +30,9 @@ echo "$NAME"    # => John (变量)
 echo '$NAME'    # => $NAME (字符串原样输出)
 echo "${NAME}!" # => John! (变量)
 NAME = "John"   # => Error (注意不能有空格)
+
+readonly NAME   # 定义为只读
+unset NAME      # 删除变量
 ```
 
 ### 注释
@@ -75,7 +78,7 @@ echo "You are $(get_name)"
 
 见：[函数](#bash-函数)
 
-### 条件句
+### 条件
 
 ```bash
 if [[ -z "$string" ]]; then
@@ -84,8 +87,6 @@ elif [[ -n "$string" ]]; then
     echo "String is not empty"
 fi
 ```
-
-见：[条件句](#bash-条件句)
 
 ### 大括号扩展
 
@@ -136,7 +137,7 @@ Bash 参数扩展
 表示 | 描述
 :-|-
 `${FOO:0:3}`    | 子串 _(位置，长度)_
-`${FOO:(-3):3}` | 从右边开始的子串
+`${FOO:(-3):3}`, `${FOO:0-3:3}` | 从右边开始的子串
 
 #### Length
 
@@ -148,9 +149,9 @@ Bash 参数扩展
 
 表示 | 描述
 :-|-
-`${FOO:-val}`     | `$FOO`，如果未设置，则为 `val`
-`${FOO:=val}`     | 如果未设置，则将 `$FOO` 设置为 `val`
-`${FOO:+val}`     | `val` 如果设置了`$FOO`
+`${FOO:-val}`     | 如果`$FOO`未设置，则为 `val`
+`${FOO:=val}`     | 如果`$FOO`未设置，则将 `$FOO` 设置为 `val`
+`${FOO:+val}`     | 如果设置了`$FOO`,  则为val`
 `${FOO:?message}` | 如果 `$FOO` 未设置，则显示消息并退出
 
 ### 替代 Substitution
@@ -203,7 +204,7 @@ DIRPATH=${SRC%$BASEPATH}
 echo $DIRPATH   # => "/path/to/"
 ```
 
-### Transform
+### 变形 Transform
 
 ```bash
 STR="HELLO WORLD!"
@@ -222,7 +223,7 @@ echo "${ARR[@]^}" # => Hello World
 Bash 数组
 ------
 
-### 定义数组
+### 定义 Define
 
 ```bash
 Fruits=('Apple' 'Banana' 'Orange')
@@ -242,7 +243,7 @@ declare -a Numbers=(1 2 3)
 Numbers+=(4 5) # 附加 => 1 2 3 4 5
 ```
 
-### 索引
+### 索引 Index
 
 :- | -
 :- | -
@@ -273,7 +274,7 @@ for i in "${!Fruits[@]}"; do
 done
 ```
 
-### 操作
+### 操作 Operate
 <!--rehype:wrap-class=col-span-2-->
 
 ```bash
@@ -341,7 +342,7 @@ for key in "${!sounds[@]}"; do
 done
 ```
 
-Bash 条件句
+Bash 条件
 ------------
 
 ### 整数条件

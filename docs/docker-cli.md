@@ -1,10 +1,27 @@
-Docker 备忘清单
+Docker CLI 速查表
 ===
 
-这是 [Docker](https://docs.docker.com/get-started/) 的快速参考备忘单。 你可以在这里找到最常见的 Docker 命令。
+Docker 帮助开发者更快地构建和发布高质量的应用。—— [什么是 Docker](https://www.docker.com/what-docker/#copy1)
+
+通过 Docker，开发者可以使用任何语言任何工具创建任何应用。“Dockerized” 的应用是完全可移植的，能在任何地方运行(Linux, Windows, 数据中心（Data center）, 云服务（Cloud）, 无服务架构（Serverless）等等。
+
+```
+docker version --format '{{.Server.Version}}'  # 查看 Docker 版本
+```
+
+## 容器(Container)
+
+- [`docker create`](https://docs.docker.com/engine/reference/commandline/create) 创建容器但不启动它。
+- [`docker rename`](https://docs.docker.com/engine/reference/commandline/rename/) 用于重命名容器。
+- [`docker run`](https://docs.docker.com/engine/reference/commandline/run) 一键创建并同时启动该容器。
+- [`docker rm`](https://docs.docker.com/engine/reference/commandline/rm) 删除容器。
+- [`docker update`](https://docs.docker.com/engine/reference/commandline/update/) 调整容器的资源限制。
+
+## 镜像(Images)
 
 入门
 ----
+
 <!--rehype:body-class=cols-2-->
 
 ### 入门
@@ -279,7 +296,6 @@ $ docker logout localhost:8080
 
 ```shell
 $ docker search nginx
-$ docker search nginx --stars=3 --no-trunc busybox
 ```
 
 拉取镜像

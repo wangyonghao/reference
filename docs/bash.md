@@ -88,6 +88,8 @@ elif [[ -n "$string" ]]; then
 fi
 ```
 
+见：[条件句](#bash-条件)
+
 ### 大括号扩展
 
 ```shell
